@@ -8,3 +8,12 @@
 
 4. if any issues put it up on the whatsapp group
 
+### Contributions
+
+- Kevin: Trace file generation and Simulator
+- Niwedita: SRRIP
+- Nakul: FIFO
+- Meghna: LIFO
+- Sanjana: BRRIP
+- Chetlur: LRU
+- Rujuta: LFU 
