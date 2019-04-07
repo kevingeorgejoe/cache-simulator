@@ -15,5 +15,6 @@
 - Nakul: FIFO
 - Meghna: LIFO
 - Sanjana: BRRIP
-- Chetlur: LRU
-- Rujuta: LFU 
+- Chetlur: LFU
+- Rujuta: LRU 
+- Ranjana: MFU
