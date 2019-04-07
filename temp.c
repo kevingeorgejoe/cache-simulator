@@ -18,7 +18,7 @@ float SRRIP(long long sets,int ways)
   long long hit=0,miss=0,index=0;
   int ways_filled[sets];
 
-  FILE* fptr = fopen("d3-16-final.txt", "r");
+  FILE* fptr = fopen("d1-final.txt", "r");
    long long iter = 0;
    for(; fscanf(fptr, "%lld", &iter) && !feof(fptr);)
       {
@@ -189,7 +189,7 @@ float lifo(long long sets,int ways)
    int flag=0,i,j=0;
    long long hit=0,miss=0,index=0;
    int ways_filled[sets];
-   FILE* fptr = fopen("d3-16-final.txt", "r");
+   FILE* fptr = fopen("d1-final.txt", "r");
    long long iter = 0;
    for(; fscanf(fptr, "%lld", &iter) && !feof(fptr);)
       {
@@ -277,7 +277,7 @@ float LRU(long long sets,int ways)
   long long hit=0,miss=0,index=0,time=0;
   int ways_filled[sets];
 
-  FILE* fptr = fopen("d2-final.txt", "r");
+  FILE* fptr = fopen("d1-final.txt", "r");
    long long iter = 0;
    for(; fscanf(fptr, "%lld", &iter) && !feof(fptr);)
       {
@@ -359,7 +359,7 @@ float LFU(long long sets,int ways)
   long long hit=0,miss=0,index=0;
   int ways_filled[sets];
 
-  FILE* fptr = fopen("d2-final.txt", "r");
+  FILE* fptr = fopen("d1-final.txt", "r");
    long long iter = 0;
    for(; fscanf(fptr, "%lld", &iter) && !feof(fptr);)
       {
@@ -441,7 +441,7 @@ float MFU(long long sets,int ways)
   long long hit=0,miss=0,index=0;
   int ways_filled[sets];
 
-  FILE* fptr = fopen("d2-final.txt", "r");
+  FILE* fptr = fopen("d1-final.txt", "r");
    long long iter = 0;
    for(; fscanf(fptr, "%lld", &iter) && !feof(fptr);)
       {
