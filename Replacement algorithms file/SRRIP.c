@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+
 float SRRIP(long long sets,int ways)
 {
    struct data
@@ -34,7 +35,7 @@ float SRRIP(long long sets,int ways)
                   if(set[index][i].tag==iter)
                   {
                      hit++;
-                     set[index][i].valid=2;
+                     set[index][i].valid=0;
                      break;
                   }
                }
@@ -53,7 +54,7 @@ float SRRIP(long long sets,int ways)
                   if(set[index][i].tag==iter)
                   {
                      hit++;
-                     set[index][i].valid=2;
+                     set[index][i].valid=0;
                      break;
                   }
                }
@@ -65,7 +66,7 @@ float SRRIP(long long sets,int ways)
                      if(set[index][i].valid==3)
                      {
                         set[index][i].tag=iter;
-                        set[index][i].valid=0;
+                        set[index][i].valid=2;
                         i=0;
                         break;
                      }
@@ -80,10 +81,12 @@ float SRRIP(long long sets,int ways)
             flag=0;
          }
       }
-   fclose(fptr);	
+   fclose(fptr);
 	printf("Hit-ratio=%f\tMiss-ratio=%f\n",((float)hit/(hit+miss)*100),((float)miss/(miss+hit)*100));
 	return (float)(hit)/(hit+miss);
 }
+
+
 int main()
 {
 	float t=SRRIP(64*8,4);

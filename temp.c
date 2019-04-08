@@ -39,7 +39,7 @@ float SRRIP(long long sets,int ways)
                   if(set[index][i].tag==iter)
                   {
                      hit++;
-                     set[index][i].valid=2;
+                     set[index][i].valid=0;
                      break;
                   }
                }
@@ -58,7 +58,7 @@ float SRRIP(long long sets,int ways)
                   if(set[index][i].tag==iter)
                   {
                      hit++;
-                     set[index][i].valid=2;
+                     set[index][i].valid=0;
                      break;
                   }
                }
@@ -70,7 +70,7 @@ float SRRIP(long long sets,int ways)
                      if(set[index][i].valid==3)
                      {
                         set[index][i].tag=iter;
-                        set[index][i].valid=0;
+                        set[index][i].valid=2;
                         i=0;
                         break;
                      }
