@@ -10,11 +10,11 @@
 
 ### Contributions
 
-- Kevin: Trace file generation and Simulator
-- Niwedita: SRRIP
-- Nakul: FIFO
-- Meghna: LIFO
-- Sanjana: BRRIP
-- Chetlur: LFU
-- Rujuta: LRU 
-- Ranjana: MFU
+- Kevin: Trace file generation, Simulator
+- Niwedita(171co227): SRRIP
+- Nakul(171co125): FIFO
+- Meghna(171co222): LIFO
+- Sanjana(171co139): BRRIP
+- Chetlur(171co213): LFU
+- Rujuta(171co137): LRU 
+- Ranjana(171co134): MFU
