@@ -511,7 +511,9 @@ float MFU(long long sets,int ways)
 
 int main(int argc, char *argv[]) {
 	
+	//declaring hit-ratio variable for each algorithm
 	float hit-ratio_srrip,hit-ratio_lifo,hit-ratio_fifo,hit-ratio_lfu,hit-ratio_lru,hit-ratio_mfu;
+
 	// ensure correct number of command line args
 	if (argc != 5) {
 		printf("usage: ./executable policy sets ways blocksize\n");
@@ -538,6 +540,7 @@ int main(int argc, char *argv[]) {
 		LRU(sets, ways, blocksize);
 	}
 	
+	//calling all the replacement algorithm
 	hit-ratio_srrip=SRRIP(sets,ways);
 	hit-ratio_lifo=lifo(sets,ways);
 	hit-ratio_fifo=fifo(sets,ways);
