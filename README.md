@@ -1,10 +1,9 @@
 ### Instructions
-
-1. unzip the .zip file into the directory
-
-2. take a look at the temp.c file to get how to structure your function
-
-3. start writing your code
+1. Clone the repository
+2. unzip the trace files
+3. The simulator.c file contains 7 aggregated codes that access the trace file by name. To run for a particular trace file, change the file name in all the functions in simulator.c.
+4. The separate files for each cache replacement algorithm are present under their respective file names in the 'replacement algorithm file' folder.
+5. The analysis has been done in the form of a graph present in the main folder showing the variation in hit ratio for different tile sizes for different algorithms.
 
 ### Contributions
 
