@@ -178,12 +178,7 @@ float fifo(long long sets,int ways)
 }
 
 
-
-
-
-
-float BRRIP (int number_of_ways, int brrip_factor) {
-  //BRRIP structures
+//BRRIP structures
 
     struct cacheline {
 
@@ -192,17 +187,19 @@ float BRRIP (int number_of_ways, int brrip_factor) {
          long long tag;
     };
 
-    printf("DEBUG before set[]\n");
     struct cacheset {
         struct cacheline line[4];
     }set[1024*1024*1024];
 
 
 //BBRIP variables
-    printf("DEBUG after set[]\n");
+
     long long indexx[1024*1024*1024],tag[1024*1024*1024];
 
-    printf("DEBUG after indexxx[]\n");
+
+
+float BRRIP (int number_of_ways, int brrip_factor) {
+  
     //reading file
 
     FILE* fptr = fopen("d1-final.txt","r");
@@ -347,7 +344,7 @@ float BRRIP (int number_of_ways, int brrip_factor) {
 
     //printf("\n\nHit ratio = %f",(((float)brrip_hit)*100)/size);
 
-    return (((float)brrip_hit)*100)/size;
+    return (((float)brrip_hit))/size;
     // return 123;
 }
 
@@ -717,28 +714,47 @@ int main(int argc, char *argv[]) {
 
   int sets = 64, ways = 4;
 	
-	// //calling all the replacement algorithm
-	hitratio_srrip=SRRIP(sets,ways);
-  printf("SRRIP hit ratio: %f\n", hitratio_srrip);
+	//calling all the replacement algorithm
 
-	hitratio_lifo=lifo(sets,ways);
-  printf("LIFO hit ratio: %f\n", hitratio_lifo);
+    while(1){
 
-	hitratio_fifo=fifo(sets,ways);
-  printf("FIFO hit ratio: %f\n", hitratio_fifo);
+        printf("\n1. SRRIP\n2. LIFO\n3. FIFO\n4. LRU\n5. LFU\n6. MFU\n7. BRRIP\n");
+        int choice;
+        scanf("%d",&choice);
 
-	hitratio_lru=LRU(sets,ways);
-  printf("LFO hit ratio: %f\n", hitratio_lru);
+        switch(choice){
 
-	hitratio_lfu=LFU(sets,ways);
-  printf("LFU hit ratio: %f\n", hitratio_lfu);
+        case 1:    hitratio_srrip=SRRIP(sets,ways);
+        printf("SRRIP hit ratio: %f\n", hitratio_srrip);
+        break;
 
-	hitratio_mfu=MFU(sets,ways);
-  printf("MFU hit ratio: %f\n", hitratio_mfu);
-	
-  hitratio_brrip=BRRIP(4,8);
-  printf("BRRIP hit ratio: %f\n", hitratio_brrip);
+        case 2:    hitratio_lifo=lifo(sets,ways);
+        printf("LIFO hit ratio: %f\n", hitratio_lifo);
+        break;
+
+        case 3:    hitratio_fifo=fifo(sets,ways);
+        printf("FIFO hit ratio: %f\n", hitratio_fifo);
+        break;
+
+        case 4:    hitratio_lru=LRU(sets,ways);
+        printf("LFO hit ratio: %f\n", hitratio_lru);
+        break;
+
+        case 5:    hitratio_lfu=LFU(sets,ways);
+        printf("LFU hit ratio: %f\n", hitratio_lfu);
+        break;
+
+        case 6:    hitratio_mfu=MFU(sets,ways);
+        printf("MFU hit ratio: %f\n", hitratio_mfu);
+        break;
+            
+        case 7: hitratio_brrip=BRRIP(ways,8);
+        printf("BRRIP hit ratio: %f\n", hitratio_brrip);
+        break;
+
+        }
+
+    }
 
 	return 0;
 }
-
