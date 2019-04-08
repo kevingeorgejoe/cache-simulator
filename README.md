@@ -6,8 +6,6 @@
 
 3. start writing your code
 
-4. if any issues put it up on the whatsapp group
-
 ### Contributions
 
 - Kevin: Trace file generation, Simulator
