@@ -84,7 +84,7 @@ float SRRIP(long long sets,int ways)
             flag=0;
          }
       }
-   fclose(fptr);
+  fclose(fptr);
 	return (float)(hit)/(hit+miss);
 }
 
@@ -131,7 +131,7 @@ float fifo(long long sets,int ways)
             }
             else
             {
-               int minti=1e99;
+               int minti=1e9;
                for(i=0;i<ways;i++)
                {
                   if(set[index][i].tag==iter)
@@ -169,38 +169,40 @@ float fifo(long long sets,int ways)
          ti++;
       }
    fclose(fptr);
-   printf("no of hits=%lld\t no of misses=%lld\n",hit,miss);
+   // printf("no of hits=%lld\t no of misses=%lld\n",hit,miss);
    float hitr;
    hitr=(float)hit/(float)(hit+miss);
-   hitr=hitr*100;
+   // hitr=hitr*100;
    //printf("Hitratio : %f\n",hitr);
    return hitr;
 }
 
-//BRRIP structures
+
+
+
+
+
+float BRRIP (int number_of_ways, int brrip_factor) {
+  //BRRIP structures
 
     struct cacheline {
 
         int pos;
         int valid;
-        long tag;
+         long long tag;
     };
 
+    printf("DEBUG before set[]\n");
     struct cacheset {
         struct cacheline line[4];
     }set[1024*1024*1024];
 
 
 //BBRIP variables
-
+    printf("DEBUG after set[]\n");
     long long indexx[1024*1024*1024],tag[1024*1024*1024];
 
-
-
-
-float BRRIP (int number_of_ways, int brrip_factor) {
-
-
+    printf("DEBUG after indexxx[]\n");
     //reading file
 
     FILE* fptr = fopen("d1-final.txt","r");
@@ -345,8 +347,8 @@ float BRRIP (int number_of_ways, int brrip_factor) {
 
     //printf("\n\nHit ratio = %f",(((float)brrip_hit)*100)/size);
 
-    return ((float)brrip_hit)*100)/size;
-
+    return (((float)brrip_hit)*100)/size;
+    // return 123;
 }
 
 
@@ -358,6 +360,7 @@ float lifo(long long sets,int ways)
       long long tag;
       int time;
    }set[sets][ways];
+
    int flag=0,i,j=0;
    long long hit=0,miss=0,index=0;
    int ways_filled[sets];
@@ -432,7 +435,7 @@ float lifo(long long sets,int ways)
    fclose(fptr);
    float hitr;
    hitr=(float)hit/(float)(hit+miss);
-   hitr=hitr*100;
+   // hitr=hitr*100;
    return hitr;
 }
 
@@ -514,7 +517,7 @@ float LRU(long long sets,int ways)
          }
       }
    fclose(fptr);	
-	printf("Hit-ratio=%f\tMiss-ratio=%f\n",((float)hit/(hit+miss)*100),((float)miss/(miss+hit)*100));
+	// printf("Hit-ratio=%f\tMiss-ratio=%f\n",((float)hit/(hit+miss)*100),((float)miss/(miss+hit)*100));
 	return (float)(hit)/(hit+miss);
 }
 
@@ -595,7 +598,7 @@ float LFU(long long sets,int ways)
          }
       }
    fclose(fptr);	
-	printf("Hit-ratio=%f\tMiss-ratio=%f\n",((float)hit/(hit+miss)*100),((float)miss/(miss+hit)*100));
+	// printf("Hit-ratio=%f\tMiss-ratio=%f\n",((float)hit/(hit+miss)*100),((float)miss/(miss+hit)*100));
 	return (float)(hit)/(hit+miss);
 }
 
@@ -677,49 +680,64 @@ float MFU(long long sets,int ways)
          }
       }
    fclose(fptr);	
-	printf("Hit-ratio=%f\tMiss-ratio=%f\n",((float)hit/(hit+miss)*100),((float)miss/(miss+hit)*100));
+	// printf("Hit-ratio=%f\tMiss-ratio=%f\n",((float)hit/(hit+miss)*100),((float)miss/(miss+hit)*100));
 	return (float)(hit)/(hit+miss);
 }
 
 int main(int argc, char *argv[]) {
 	
 	//declaring hit-ratio variable for each algorithm
-	float hit-ratio_srrip,hit-ratio_lifo,hit-ratio_fifo,hit-ratio_lfu,hit-ratio_lru,hit-ratio_mfu,hit-ratio_brrip;
+	float hitratio_srrip,hitratio_lifo,hitratio_fifo,hitratio_lfu,hitratio_lru,hitratio_mfu,hitratio_brrip;
 
-	// ensure correct number of command line args
-	if (argc != 5) {
-		printf("usage: ./executable policy sets ways blocksize\n");
-		exit(1);
-	}
+	// // // ensure correct number of command line args
+	// // if (argc != 5) {
+	// // 	printf("usage: ./executable policy sets ways blocksize\n");
+	// // 	exit(1);
+	// // }
 
-	// // DEBUG to display the 5 command line args
-	// printf("argc: %d\n", argc);
-	// for(int i = 0; i < 5; i++) {
-	// 	printf("argv[%d]: %s \n", i, argv[i]);
-	// }
+	// // // DEBUG to display the 5 command line args
+	// // printf("argc: %d\n", argc);
+	// // for(int i = 0; i < 5; i++) {
+	// // 	printf("argv[%d]: %s \n", i, argv[i]);
+	// // }
 
-	// to convert character array to int
-	// for easy arguement passing to policy function
-	int sets, ways, blocksize;
-	sets = atoi(argv[2]);
-	ways = atoi(argv[3]);
-	blocksize = atoi(argv[4]);
-	printf("%d %d %d\n", sets, ways, blocksize);
+	// // to convert character array to int
+	// // for easy arguement passing to policy function
+	// // int sets, ways, blocksize;
+	// // sets = atoi(argv[2]);
+	// // ways = atoi(argv[3]);
+	// // blocksize = atoi(argv[4]);
+	// // printf("%d %d %d\n", sets, ways, blocksize);
 
-	// how policy will be called
-	if (!strcmp(argv[1], "lru")) {
-		printf("call LRU()\n");
-		LRU(sets, ways, blocksize);
-	}
+	// // // how policy will be called
+	// // if (!strcmp(argv[1], "lru")) {
+	// // 	printf("call LRU()\n");
+	// // 	LRU(sets, ways, blocksize);
+	// // }
+
+  int sets = 64, ways = 4;
 	
-	//calling all the replacement algorithm
-	hit-ratio_srrip=SRRIP(sets,ways);
-	hit-ratio_lifo=lifo(sets,ways);
-	hit-ratio_fifo=fifo(sets,ways);
-	hit-ratio_lru=LFU(sets,ways);
-	hit-ratio_lfu=LFU(sets,ways);
-	hit-ratio_mfu=MFU(sets,ways);
-	hit-ratio_brrip=BRRIP(4,8);
+	// //calling all the replacement algorithm
+	hitratio_srrip=SRRIP(sets,ways);
+  printf("SRRIP hit ratio: %f\n", hitratio_srrip);
+
+	hitratio_lifo=lifo(sets,ways);
+  printf("LIFO hit ratio: %f\n", hitratio_lifo);
+
+	hitratio_fifo=fifo(sets,ways);
+  printf("FIFO hit ratio: %f\n", hitratio_fifo);
+
+	hitratio_lru=LRU(sets,ways);
+  printf("LFO hit ratio: %f\n", hitratio_lru);
+
+	hitratio_lfu=LFU(sets,ways);
+  printf("LFU hit ratio: %f\n", hitratio_lfu);
+
+	hitratio_mfu=MFU(sets,ways);
+  printf("MFU hit ratio: %f\n", hitratio_mfu);
+	
+  hitratio_brrip=BRRIP(4,8);
+  printf("BRRIP hit ratio: %f\n", hitratio_brrip);
 
 	return 0;
 }
